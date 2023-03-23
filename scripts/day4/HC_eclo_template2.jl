@@ -13,6 +13,16 @@ using MAT
 end
 
 @views function Itp1D_scalar1(xlt, varlt, xdata, dx, xmin)
+    """Interpolation function through one variable:
+    Inputs:
+    - xlt: x points [1D array]
+    - varlt: y variable at the x points [1D array]
+    - xdata: x value at which we want to know the value of y [scalar]
+    - dx: spacing between two values [scalar]
+    - xmin: minimum value of x [scalar]
+
+    Return the y value at the point of interest x [scalar]
+    """
     iW = Int(floor((xdata - xmin) / dx) + 1)
     wW = 1. - (xdata - xlt[iW]) / dx
     return wW * varlt[iW] + (1. - wW) * varlt[iW + 1]
